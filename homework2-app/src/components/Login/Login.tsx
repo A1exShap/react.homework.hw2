@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { User } from "../../models/user";
 import { useDispatch } from "react-redux";
 import { useState } from 'react';
+import { Button, TextField } from '@mui/material';
+
 
 const css = {
     margin: '10px',
@@ -44,20 +46,12 @@ const Login = () => {
         <>
             <div style={css}>
                 <div>
-                    <label>Логин:</label>
-                    <input
-                        type="text"
-                        placeholder="ЛОГИН"
-                        id="loginInput"
-                        value={username}
-                        onChange={handleChange}
-                    />
+                    <TextField id="loginInput" label="ЛОГИН" variant="filled" value={username} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Пароль:</label>
-                    <input type="password" placeholder="ПАРОЛЬ" id="passwordInput" />
+                    <TextField id="passwordInput" type="password" label="ПАРОЛЬ" variant="filled" />
                 </div>
-                <button type="button" onClick={onClick}>Войти</button>
+                <Button variant="contained" onClick={onClick}>Войти</Button>
             </div>
         </>
     );
