@@ -1,18 +1,22 @@
-import { useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const Home = () => {
-
     const css = {
         margin: '10px',
-        padding:'10px',
+        padding: '10px',
         border: '5px solid purple'
     };
 
-    const qp = useParams();
+    let { id } = useParams();
 
-    let message = qp?.id? `Главная (Пользователь ${qp.id})` : 'Главная';
+    const user = useSelector((gs:any) => gs.user);
+    
+    if (!id) id = user.username;
 
-    return <div style={css}>{message}</div>
+    let message = id ? `Главная (Пользователь: ${id})` : 'Главная';
+
+    return <div style={css}>{message}</div>;
 };
 
 export default Home;
